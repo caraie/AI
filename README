@@ -1,0 +1,13 @@
+AI
+==
+
+Small proofs of concept while reading about artificial intelligence.
+One directory per idea, each with the algorithm and a test that runs it,
+nothing shared between them on purpose: they are meant to be read one at
+a time.
+
+Python needs nothing but the standard library, the C++ ones only a
+compiler and make.
+
+    python test_<name>.py     in a python directory
+    make && ./<name>_test     in a c++ directory
