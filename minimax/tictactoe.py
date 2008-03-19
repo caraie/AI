@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Minimax for tic tac toe.
 
-Full depth search, the game tree is small enough to walk it whole.
-A board is just a list of nine cells holding 'X', 'O' or a space.
+Full depth search with alpha beta pruning. A board is just a list of
+nine cells holding 'X', 'O' or a space.
 """
 
 X = "X"
@@ -52,11 +52,15 @@ def score(board, player, depth):
     return 0
 
 
-def minimax(board, player, turn, depth=0):
+def minimax(board, player, turn, depth=0, alpha=-100, beta=100):
     """Return (value, move) for the side to move.
 
     player is the side we are scoring for, turn is the side that has to
     play now, so on odd plies we minimize instead of maximize.
+
+    alpha is the best score the maximizing side can already count on and
+    beta the same for the minimizing one. Once they cross, whatever is
+    left of this branch cannot change the answer above.
     """
     if winner(board) is not None or not legal_moves(board):
         return score(board, player, depth), None
@@ -67,7 +71,7 @@ def minimax(board, player, turn, depth=0):
 
     for move in legal_moves(board):
         board[move] = turn
-        value = minimax(board, player, opponent(turn), depth + 1)[0]
+        value = minimax(board, player, opponent(turn), depth + 1, alpha, beta)[0]
         board[move] = EMPTY
 
         if best_value is None:
@@ -80,6 +84,14 @@ def minimax(board, player, turn, depth=0):
         if better:
             best_value = value
             best_move = move
+
+        if maximizing:
+            alpha = max(alpha, best_value)
+        else:
+            beta = min(beta, best_value)
+
+        if alpha >= beta:
+            break
 
     return best_value, best_move
 

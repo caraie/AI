@@ -1,8 +1,9 @@
 minimax
 =======
 
-Tic tac toe solved by plain minimax. The whole game tree fits in memory
-so there is no depth limit and no heuristic, only the final score.
+Tic tac toe solved by minimax with alpha beta pruning. The whole game
+tree fits in memory so there is no depth limit and no heuristic, only
+the final score.
 
     python tictactoe.py     self play, always a draw
     python test_minimax.py  tests
