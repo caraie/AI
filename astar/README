@@ -1,0 +1,8 @@
+astar
+=====
+
+A* path finding on a grid with four directional movement and the
+Manhattan distance as heuristic.
+
+    python astar.py       prints the path over the sample map
+    python test_astar.py  tests
