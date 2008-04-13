@@ -1,0 +1,7 @@
+nqueens
+=======
+
+N queens by backtracking, with one flag per row and per diagonal so the
+check for a safe square is constant time.
+
+    make && ./nqueens_test
