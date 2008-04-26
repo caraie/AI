@@ -1,0 +1,8 @@
+perceptron
+==========
+
+The classic perceptron learning rule on toy data. Learns and/or, and
+fails on xor as it should.
+
+    python perceptron.py       trains the three gates
+    python test_perceptron.py  tests
