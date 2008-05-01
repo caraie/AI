@@ -6,6 +6,8 @@ linearly separable; when it is not the weights keep bouncing around and
 the training just runs out of epochs.
 """
 
+import random
+
 
 def dot(a, b):
     total = 0.0
@@ -28,15 +30,25 @@ class Perceptron:
             return 1
         return -1
 
-    def train(self, samples, labels, epochs=100):
+    def train(self, samples, labels, epochs=100, rng=None):
         """Run the update rule until nothing is misclassified.
 
         Returns the number of epochs used, or epochs if it never
         settled down.
+
+        The order of the samples is shuffled on every pass. Walking them
+        always in the same order lets the last few examples pull the
+        weights around more than the rest.
         """
+        if rng is None:
+            rng = random.Random()
+
+        order = list(range(len(samples)))
+
         for epoch in range(epochs):
+            rng.shuffle(order)
             errors = 0
-            for i in range(len(samples)):
+            for i in order:
                 sample = samples[i]
                 guess = self.output(sample)
                 if guess == labels[i]:
