@@ -1,0 +1,8 @@
+kmeans
+======
+
+k means clustering with Lloyd's algorithm over 2d points. The first k
+points are used as the starting centroids so every run gives the same
+answer.
+
+    make && ./kmeans_test
