@@ -1,0 +1,7 @@
+levenshtein
+===========
+
+Edit distance with the two row version of the usual table, plus a small
+"did you mean" lookup over a word list.
+
+    make && ./levenshtein_test
