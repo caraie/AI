@@ -1,0 +1,8 @@
+naivebayes
+==========
+
+Bag of words naive bayes over a handful of spam and ham messages, with
+add one smoothing.
+
+    python spam.py       classifies two sample messages
+    python test_spam.py  tests
