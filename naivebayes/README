@@ -2,7 +2,7 @@ naivebayes
 ==========
 
 Bag of words naive bayes over a handful of spam and ham messages, with
-add one smoothing.
+add one smoothing and the scores kept in logs.
 
     python spam.py       classifies two sample messages
     python test_spam.py  tests

@@ -5,6 +5,7 @@ Bag of words, one multinomial per class and Laplace smoothing so that a
 word never seen in a class does not kill the whole product.
 """
 
+import math
 import re
 
 WORD = re.compile("[a-z']+")
@@ -42,21 +43,28 @@ class NaiveBayes:
         return float(seen + 1) / (self.totals[label] + len(self.vocabulary))
 
     def score(self, text, label):
+        """Log of the unnormalised probability of this text in a class.
+
+        Multiplying the word probabilities together underflows to zero on
+        anything longer than a couple of lines, and once every class
+        scores zero the answer is just whichever was tried first. Adding
+        logs keeps the same ordering without the trouble.
+        """
         total_documents = 0
         for count in self.documents.values():
             total_documents += count
 
-        probability = float(self.documents[label]) / total_documents
+        score = math.log(float(self.documents[label]) / total_documents)
         for word in tokenize(text):
-            probability *= self.word_probability(word, label)
-        return probability
+            score += math.log(self.word_probability(word, label))
+        return score
 
     def classify(self, text):
         best = None
-        best_score = -1.0
+        best_score = None
         for label in self.counts:
             value = self.score(text, label)
-            if value > best_score:
+            if best_score is None or value > best_score:
                 best_score = value
                 best = label
         return best

@@ -23,6 +23,10 @@ class ClassifyTest(unittest.TestCase):
     def setUp(self):
         self.model = spam.trained()
 
+    def test_scores_are_comparable(self):
+        self.assertTrue(self.model.score("free money", "spam") >
+                        self.model.score("free money", "ham"))
+
     def test_obvious_spam(self):
         self.assertEqual("spam", self.model.classify("free money click here now"))
 
@@ -36,9 +40,17 @@ class ClassifyTest(unittest.TestCase):
             self.assertEqual("ham", self.model.classify(text))
 
     def test_unknown_words_do_not_break_it(self):
-        # smoothing keeps the score above zero even for a word never seen
-        self.assertTrue(self.model.score("zurbaran", "spam") > 0.0)
+        # smoothing gives a word never seen a small but finite score
+        self.assertTrue(self.model.score("zurbaran", "spam") > -100.0)
         self.assertTrue(self.model.classify("zurbaran") is not None)
+
+    def test_a_long_message_still_gets_an_answer(self):
+        # multiplying probabilities this one underflowed and every class
+        # ended up tied at zero
+        text = " ".join(spam.SPAM)
+        self.assertTrue(self.model.score(text, "spam") >
+                        self.model.score(text, "ham"))
+        self.assertEqual("spam", self.model.classify(text))
 
 
 if __name__ == "__main__":
