@@ -1,0 +1,7 @@
+mlp
+===
+
+Multilayer perceptron with one hidden layer trained by backpropagation,
+learning xor. Weights start from a fixed seed so a run can be repeated.
+
+    make && ./mlp_test
