@@ -1,0 +1,8 @@
+markov
+======
+
+Order n markov chain over words. Feed it lines of text and it babbles
+back something that almost makes sense.
+
+    python chain.py       five generated lines
+    python test_chain.py  tests
