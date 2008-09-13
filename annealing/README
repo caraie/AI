@@ -1,0 +1,8 @@
+annealing
+=========
+
+Simulated annealing for the travelling salesman problem over 2-opt
+moves. The cities sit on a circle, so the best tour is known and the
+result can be checked against it.
+
+    make && ./annealing_test
