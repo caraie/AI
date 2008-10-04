@@ -1,0 +1,8 @@
+id3
+===
+
+ID3 decision tree over discrete attributes, split by information gain,
+run against Quinlan's play tennis table.
+
+    python id3.py       prints the tree and the gains
+    python test_id3.py  tests
