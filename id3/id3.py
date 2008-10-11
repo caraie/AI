@@ -72,12 +72,20 @@ def build(rows, attributes, target):
     for value, group in split(rows, best).items():
         branches[value] = build(group, rest, target)
 
-    return {"attribute": best, "branches": branches}
+    # the majority is kept around for values that never showed up here
+    return {"attribute": best, "branches": branches,
+            "default": majority(rows, target)}
 
 
 def classify(tree, sample):
     while isinstance(tree, dict):
-        tree = tree["branches"][sample[tree["attribute"]]]
+        value = sample[tree["attribute"]]
+        if value not in tree["branches"]:
+            # nothing in the training set had this value, so there is no
+            # branch to walk down; answer with what most of the rows that
+            # reached this node said
+            return tree["default"]
+        tree = tree["branches"][value]
     return tree
 
 

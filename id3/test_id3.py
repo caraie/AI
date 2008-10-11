@@ -51,6 +51,12 @@ class TreeTest(unittest.TestCase):
         for row in id3.TENNIS:
             self.assertEqual(row["play"], id3.classify(self.tree, row))
 
+    def test_unseen_value_falls_back_to_the_majority(self):
+        # no row in the table was ever taken in the snow
+        day = {"outlook": "snow", "temperature": "cool",
+               "humidity": "normal", "wind": "weak"}
+        self.assertEqual("yes", id3.classify(self.tree, day))
+
     def test_classifies_a_new_day(self):
         day = {"outlook": "sunny", "temperature": "cool",
                "humidity": "normal", "wind": "strong"}
