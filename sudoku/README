@@ -1,0 +1,7 @@
+sudoku
+======
+
+Backtracking sudoku solver that always fills the most constrained cell
+first, which is what makes the 21 given number puzzles finish quickly.
+
+    make && ./sudoku_test
