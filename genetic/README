@@ -1,0 +1,8 @@
+genetic
+=======
+
+Genetic algorithm for the 0/1 knapsack: tournament selection, one point
+crossover, bit flip mutation and one elite kept per generation.
+
+    python knapsack.py       packs the sample bag
+    python test_knapsack.py  tests
