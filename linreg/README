@@ -1,0 +1,7 @@
+linreg
+======
+
+Simple linear regression fitted twice, once by gradient descent and once
+by least squares, so the two can be compared.
+
+    make && ./linreg_test
