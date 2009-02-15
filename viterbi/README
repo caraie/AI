@@ -1,0 +1,8 @@
+viterbi
+=======
+
+Viterbi decoding over a small hidden markov model, the usual healthy /
+fever example with three days of symptoms.
+
+    python viterbi.py       decodes the sample observations
+    python test_viterbi.py  tests
