@@ -26,9 +26,11 @@ struct AcoOptions
     double alpha;        /* weight of the trail */
     double beta;         /* weight of the distance */
     double evaporation;  /* share of pheromone lost each round */
+    int elite;           /* extra deposits on the best tour so far */
 
     AcoOptions()
-        : ants(20), iterations(120), alpha(1.0), beta(3.0), evaporation(0.5) {}
+        : ants(20), iterations(120), alpha(1.0), beta(3.0),
+          evaporation(0.5), elite(4) {}
 };
 
 /*
@@ -38,6 +40,10 @@ struct AcoOptions
  * proportional to trail^alpha * (1/distance)^beta, and then lays down
  * pheromone in inverse proportion to the length of what it walked. Short
  * tours get reinforced, the rest evaporates.
+ *
+ * On top of that the best tour found so far is reinforced a few extra
+ * times every round. Without it the trail spreads too thin on the bigger
+ * rings and the colony wanders for a long time.
  */
 class AntColony
 {

@@ -1,8 +1,9 @@
 antcolony
 =========
 
-Ant colony optimisation for the travelling salesman problem. The cities
-are on a circle so the best tour is known and the colony can be scored
-against it.
+Ant colony optimisation for the travelling salesman problem, with a few
+elite ants reinforcing the best tour of each round. The cities are on a
+circle so the best tour is known and the colony can be scored against
+it.
 
     make && ./antcolony_test

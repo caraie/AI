@@ -177,6 +177,10 @@ Tour AntColony::run(Random &random)
         evaporate();
         for (std::size_t i = 0; i < tours.size(); ++i)
             deposit(tours[i], lengths[i]);
+
+        /* the elite ants: they all walk the best tour known so far */
+        for (int e = 0; e < m_options.elite; ++e)
+            deposit(m_best, m_bestLength);
     }
 
     return m_best;

@@ -98,6 +98,27 @@ void testTrailsGrowOnGoodEdges()
     assert(neighbour > across);
 }
 
+void testEliteAntsDoNotHurt()
+{
+    const int count = 20;
+    std::vector<City> cities = circleOfCities(count, 10.0);
+    double best = tourLength(cities, inOrder(count));
+
+    AcoOptions plain;
+    plain.elite = 0;
+
+    AntColony without(cities, plain);
+    Random first(1979);
+    without.run(first);
+
+    AntColony with(cities);
+    Random second(1979);
+    with.run(second);
+
+    assert(with.bestLength() <= without.bestLength());
+    assert(with.bestLength() < best * 1.02);
+}
+
 void testTwoCities()
 {
     std::vector<City> cities;
@@ -121,6 +142,7 @@ int main()
     testWalkVisitsEveryCity();
     testFindsTheCircle();
     testTrailsGrowOnGoodEdges();
+    testEliteAntsDoNotHurt();
     testTwoCities();
 
     std::vector<City> cities = circleOfCities(15, 10.0);
