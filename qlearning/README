@@ -1,0 +1,8 @@
+qlearning
+=========
+
+Tabular Q learning with an epsilon greedy policy on a five by four grid
+world with one goal and one pit.
+
+    python gridworld.py       trains and prints the learnt path
+    python test_gridworld.py  tests
