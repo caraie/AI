@@ -1,0 +1,7 @@
+fuzzy
+=====
+
+Fuzzy controller with triangular membership functions and weighted
+average output, deciding the speed of a fan from the room temperature.
+
+    make && ./fuzzy_test
