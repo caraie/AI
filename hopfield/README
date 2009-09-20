@@ -1,0 +1,8 @@
+hopfield
+========
+
+Hopfield network storing three five by five letters and recalling them
+from a damaged input, with the energy of the state as the proof that it
+is going downhill.
+
+    make && ./hopfield_test
