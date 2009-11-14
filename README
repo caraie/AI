@@ -11,3 +11,27 @@ compiler and make.
 
     python test_<name>.py     in a python directory
     make && ./<name>_test     in a c++ directory
+
+Contents
+--------
+
+    annealing     simulated annealing for the travelling salesman
+    antcolony     ant colony optimisation, same problem
+    astar         A* path finding over a grid
+    fuzzy         fuzzy controller with triangular sets
+    genetic       genetic algorithm for the knapsack
+    hopfield      hopfield network as associative memory
+    id3           decision tree by information gain
+    kmeans        k means clustering
+    knn           k nearest neighbours
+    levenshtein   edit distance and a did you mean lookup
+    linreg        linear regression, gradient descent and least squares
+    markov        markov chain text generator
+    minimax       tic tac toe solved by minimax
+    mlp           multilayer perceptron trained with backpropagation
+    naivebayes    naive bayes spam filter
+    nqueens       n queens by backtracking
+    perceptron    the perceptron learning rule
+    qlearning     q learning on a grid world
+    sudoku        sudoku solver
+    viterbi       viterbi decoding for a hidden markov model
