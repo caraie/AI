@@ -1,0 +1,21 @@
+cudamatmul
+==========
+
+Square matrix product on the graphics card, written against CUDA 2.3.
+
+Two kernels: the obvious one, where every thread reads its whole row and
+column straight out of global memory, and a tiled one that stages 16 x 16
+blocks in shared memory so each value is read once and used sixteen
+times. Same result, several times faster.
+
+Needs the toolkit and a card of compute capability 1.1 or better:
+
+    make && ./cudamatmul_test
+
+Without a card the host tests still run and the gpu ones are skipped.
+There is also
+
+    make emu
+
+which builds the kernels for the cpu with -deviceemu. Do not try it on
+anything much bigger than 128 x 128.

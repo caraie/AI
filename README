@@ -7,7 +7,8 @@ nothing shared between them on purpose: they are meant to be read one at
 a time.
 
 Python needs nothing but the standard library, the C++ ones only a
-compiler and make.
+compiler and make. The cuda ones want the toolkit and a card, but their
+tests run without one and skip the parts that need it.
 
     python test_<name>.py     in a python directory
     make && ./<name>_test     in a c++ directory
@@ -18,6 +19,7 @@ Contents
     annealing     simulated annealing for the travelling salesman
     antcolony     ant colony optimisation, same problem
     astar         A* path finding over a grid
+    cudamatmul    matrix product on the gpu, naive and tiled
     fuzzy         fuzzy controller with triangular sets
     genetic       genetic algorithm for the knapsack
     hopfield      hopfield network as associative memory
