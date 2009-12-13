@@ -19,6 +19,7 @@ Contents
     annealing     simulated annealing for the travelling salesman
     antcolony     ant colony optimisation, same problem
     astar         A* path finding over a grid
+    cudakmeans    k means with the assignment step on the gpu
     cudamatmul    matrix product on the gpu, naive and tiled
     fuzzy         fuzzy controller with triangular sets
     genetic       genetic algorithm for the knapsack

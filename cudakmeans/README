@@ -1,0 +1,18 @@
+cudakmeans
+==========
+
+The same k means as in ../kmeans, with the assignment step moved to the
+graphics card.
+
+Every point has to be measured against every centroid and none of those
+measurements depend on each other, so it is one thread per point. The
+centroids are the same for the whole block and go into shared memory once
+per block instead of being read from global memory k times per point.
+
+The update step stays on the host: it is a few sums over k clusters, and
+doing it on the card means atomics or a reduction pass for no real gain.
+
+    make && ./cudakmeans_test
+
+Without a card the host tests still run and the gpu ones are skipped.
+There is also make emu, which builds the kernel for the cpu.
